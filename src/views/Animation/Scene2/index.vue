@@ -160,7 +160,7 @@ onMounted(() => {
                 <el-switch style="margin-left: 30px;" v-model="animation.isFinished" active-text="完结" inactive-text="未完结" />
             </el-form-item>
             <el-form-item prop="cover" label="动画封面">
-                <el-upload class="avatar-uploader" ref="upload" action="http://127.0.0.1:5173/api/upload"
+                <el-upload class="avatar-uploader" ref="upload" action="http://localhost:5173/api/upload"
                     :show-file-list="false" :on-success="uploadSuccess" :before-upload="beforeUpload">
                     <img v-if="animation.cover" :src="animation.cover" class="avatar" />
                     <el-icon v-else class="avatar-uploader-icon">

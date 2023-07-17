@@ -7,3 +7,8 @@ export interface ALLANIMATION {
     searchKey?: string,
     searchValue?: string
 }
+
+export interface DELETEANIMATIONTAG {
+    animation_id: number,
+    tag_id: number
+}

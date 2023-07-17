@@ -249,7 +249,7 @@ onMounted(() => {
                 <el-input v-model="video.description" placeholder="请输入该集的描述" />
             </el-form-item>
             <el-form-item prop="play_address" label="视频">
-                <el-upload v-model:file-list="fileList" ref="upload" action="http://127.0.0.1:5173/api/upload" :limit="1"
+                <el-upload v-model:file-list="fileList" ref="upload" action="http://localhost:5173/api/upload" :limit="1"
                     :on-exceed="handleExceed" :on-success="uploadSuccess" :on-remove="uploadRemove"
                     :before-upload="beforeUpload">
                     <template #trigger>

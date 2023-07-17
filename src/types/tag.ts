@@ -5,7 +5,3 @@ export interface TAG {
 }
 
 export type TAGLIST = TAG[]
-
-export function get() {
-    console.log(123)
-}

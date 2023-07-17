@@ -3,7 +3,7 @@ import type { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "a
 import useUserStore from "@/store/module/user.ts"
 
 const request: AxiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:5173/api",
+    baseURL: "http://localhost:5173/api",
     timeout: 5000
 })
 

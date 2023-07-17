@@ -3,7 +3,7 @@ import { ref } from "vue"
 import router from "@/router/index.ts"
 import { SET_TOKEN, REMOVE_TOKEN, GET_TOKEN } from "@/util/token.ts"
 import { constRoutes, anyRoutes, asyncRoutes } from "@/router/routes";
-import {login,getUserInfo} from "@/api/UserApi/index.ts"
+import { login, getUserInfo } from "@/api/UserApi/index.ts"
 
 //@ts-ignore
 import cloneDeep from "lodash/cloneDeep"
@@ -27,11 +27,9 @@ export default defineStore("userStore", () => {
     const avatar = ref<string>("")
     const token = ref<string | null>(GET_TOKEN())
     const menuRoutes = ref<any>(constRoutes)
-
     let userAsyncRoutes: any = []
-
     async function userLogin({ username, password }: any) {
-        const res:any = await login(username, password)
+        const res: any = await login(username, password)
         if (res.code == 200) {
             token.value = res.data as string
             SET_TOKEN(token.value)
@@ -42,7 +40,7 @@ export default defineStore("userStore", () => {
 
     //获取用户信息
     async function userInfo() {
-        const res:any = await getUserInfo()
+        const res: any = await getUserInfo()
         if (res.code == 200) {
             username.value = res.data.realname
             avatar.value = res.data.avatar
@@ -69,7 +67,7 @@ export default defineStore("userStore", () => {
         token.value = null
         username.value = ""
         avatar.value = ""
-        menuRoutes.value=constRoutes
+        menuRoutes.value = constRoutes
     }
 
     return {

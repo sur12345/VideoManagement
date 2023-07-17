@@ -1,16 +1,28 @@
 import request from "@/util/request";
-import type { ALLANIMATION } from "./type";
+import type { ALLANIMATION, DELETEANIMATIONTAG } from "./type";
+
+const enum API {
+    GETALLANIMATION = "/getAllAnimation",
+    GETANIMATIONVIDEO = "/getAnimationVideo",
+    DELETEANIMATION = "/deleteAnimation",
+    DELETEANIMATIONTAG = "/deleteAnimationTag",
+    DELETEANIMATIONVIDEO = "/deleteAnimationVideo",
+    ADDANIMATION = "/addAnimation",
+    ADDANIMATIONVIDEO = "/addAnimationVideo",
+    UPDATEANIMATION = "/updateAnimation",
+    UPDATEANIMATIONVIDEO = "/updateAnimationVideo"
+}
 
 //获取动画列表
 export function getAllAnimation(data: ALLANIMATION) {
-    return request.get("/getAllAnimation", {
+    return request.get(API.GETALLANIMATION, {
         params: data
     })
 }
 
 //获取动画视频
 export function getAnimationVideo(animation_id: number) {
-    return request.get("/getAnimationVideo", {
+    return request.get(API.GETANIMATIONVIDEO, {
         params: {
             animation_id
         }
@@ -19,7 +31,7 @@ export function getAnimationVideo(animation_id: number) {
 
 //删除动画
 export function deleteAnimation(animation_id: number) {
-    return request.delete("/deleteAnimation", {
+    return request.delete(API.DELETEANIMATION, {
         params: {
             animation_id
         }
@@ -27,15 +39,15 @@ export function deleteAnimation(animation_id: number) {
 }
 
 //删除动画的某个标签
-export function deleteAnimationTag(data: any) {
-    return request.delete("/deleteAnimationTag", {
+export function deleteAnimationTag(data: DELETEANIMATIONTAG) {
+    return request.delete(API.DELETEANIMATIONTAG, {
         data
     })
 }
 
 //删除动画的某个视频
 export function deleteAnimationVideo(video_id: number) {
-    return request.delete("/deleteAnimationVideo", {
+    return request.delete(API.DELETEANIMATIONVIDEO, {
         params: {
             video_id
         }
@@ -44,22 +56,20 @@ export function deleteAnimationVideo(video_id: number) {
 
 //添加动画
 export function addAnimation(animation: any) {
-    return request.post("/addAnimation", animation)
+    return request.post(API.ADDANIMATION, animation)
 }
 
 //添加动画视频
 export function addAnimationVideo(data: any) {
-    return request.post("/addAnimationVideo", data)
+    return request.post(API.ADDANIMATIONVIDEO, data)
 }
 
 //更新动画
 export function updateAnimation(animation: any) {
-    return request.post("/updateAnimation", animation)
+    return request.post(API.UPDATEANIMATION, animation)
 }
 
 //更新动画视频信息
 export function updateAnimationVideo(data: any) {
-    return request.post("/updateAnimationVideo", data)
+    return request.post(API.UPDATEANIMATIONVIDEO, data)
 }
-
-

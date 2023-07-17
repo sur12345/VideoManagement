@@ -32,10 +32,10 @@ const searchTypes = ref([
 ])
 
 //计算类型标签
-const searchType = computed(() => {
+const searchType = computed<string>((): string => {
     return searchTypes.value.find(item => {
         return item.value == searchKey.value
-    })?.label
+    })?.label as string
 })
 
 //暂存搜索参数
@@ -55,7 +55,7 @@ const table_height = ref<string>("0px")
 
 let timer: any = null
 
-const watcher = watch(() => animationList.value.length, () => {
+const watcher = watch((): number => animationList.value.length, (): void => {
     nextTick(() => {
         getTableHeight()
         timer = setInterval(() => {
@@ -102,6 +102,7 @@ const getAnimationList = async () => {
 
 //搜索按钮回调
 const search = () => {
+    requestData.page = 1
     requestData.searchKey = searchKey.value
     requestData.searchValue = searchValue.value
     getAnimationList()
@@ -193,7 +194,7 @@ defineExpose({
         <el-card class="scene1">
             <el-row class="scene1-row">
                 <el-col :span="6">
-                    <el-select @change="getAnimationList" class="animationType" :disabled="disabled"
+                    <el-select @change="limitChange" class="animationType" :disabled="disabled"
                         v-model="requestData.isMovie">
                         <el-option v-for="item in animationTypes" :key="item.type" :label="item.label" :value="item.type" />
                     </el-select>
